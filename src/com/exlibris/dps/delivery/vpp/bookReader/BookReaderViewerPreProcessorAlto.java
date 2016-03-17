@@ -51,6 +51,7 @@ import com.exlibris.digitool.common.dnx.DnxDocumentHelper;
 import com.exlibris.dps.alto.xsd.Alto;
 import com.exlibris.dps.alto.xsd.Alto.Layout.Page;
 import com.exlibris.dps.alto.xsd.BlockType;
+import com.exlibris.dps.alto.xsd.ComposedBlockType;
 import com.exlibris.dps.alto.xsd.StringType;
 import com.exlibris.dps.alto.xsd.TextBlockType;
 import com.exlibris.dps.alto.xsd.TextBlockType.TextLine;
@@ -377,29 +378,42 @@ public class BookReaderViewerPreProcessorAlto extends AbstractViewerPreProcessor
 		  }
 		return resault;
 	}
-
+//Added support for composedBlock
 	private Alto setParagraphTitle(Alto alto) {
 		for (Page page : alto.getLayout().getPage()) {
 			for (BlockType blockType : page.getPrintSpace().getTextBlockOrIllustrationOrGraphicalElement()) {
 				if (blockType instanceof TextBlockType) {
-					TextBlockType textBlockType = (TextBlockType) blockType;
-					StringBuilder paragraph= new StringBuilder();
-					for (TextLine textLine : textBlockType.getTextLine()) {
-						for (Object object : textLine.getStringAndSP()) {
-							if (object instanceof StringType) {
-								StringType stringType = (StringType) object;
-								paragraph.append(stringType.getCONTENT()).append(" ");
-							}
+					titleBuilder(blockType);
+					
+				} else if (blockType instanceof ComposedBlockType) {
+					ComposedBlockType composedBlockType=(ComposedBlockType)blockType;
+					for (BlockType innerBlockType : composedBlockType.getTextBlockOrIllustrationOrGraphicalElement()) {
+						if (innerBlockType instanceof TextBlockType) {
+							titleBuilder(innerBlockType);
 						}
-						paragraph.deleteCharAt(paragraph.length()-1).append("\n");
-					}
-					String par = paragraph.toString().replaceAll("-\n", "");
-					textBlockType.setTitle(par);
+					 }
 				}
 			}
 		}
 		return alto;
 	}
+
+	private void titleBuilder(BlockType blockType) {
+		TextBlockType textBlockType = (TextBlockType) blockType;
+		StringBuilder paragraph= new StringBuilder();
+		for (TextLine textLine : textBlockType.getTextLine()) {
+			for (Object object : textLine.getStringAndSP()) {
+				if (object instanceof StringType) {
+					StringType stringType = (StringType) object;
+					paragraph.append(stringType.getCONTENT()).append(" ");
+				}
+			}
+			paragraph.deleteCharAt(paragraph.length()-1).append("\n");
+		}
+		String par = paragraph.toString().replaceAll("-\n", "");
+		textBlockType.setTitle(par);
+	}
+
 
 	private void parsToPropFile(String filePath){
 		Properties prop = new Properties();

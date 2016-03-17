@@ -13,7 +13,7 @@
 </fr:x_form>
 </pl:initParameters>
   <pl:description>BookReader Viewer PreProcessor Alto</pl:description>
-  <pl:version>1</pl:version>
+  <pl:version>2</pl:version>
   <pl:materialType>DIGITAL</pl:materialType>
   <pl:module>Delivery</pl:module>
   <pl:generalType>TASK</pl:generalType>

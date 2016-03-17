@@ -391,7 +391,7 @@ public class BookReaderViewerPreProcessorAlto extends AbstractViewerPreProcessor
 						if (innerBlockType instanceof TextBlockType) {
 							titleBuilder(innerBlockType);
 						}
-					 }
+					}
 				}
 			}
 		}

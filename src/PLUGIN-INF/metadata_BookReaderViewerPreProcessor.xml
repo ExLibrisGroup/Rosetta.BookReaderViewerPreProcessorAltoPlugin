@@ -2,16 +2,7 @@
   <pl:pluginTypeName>VPPPlugin</pl:pluginTypeName>
   <pl:deployName>BookReaderViewerPreProcessorAltoPlugin</pl:deployName>
  <pl:className>com.exlibris.dps.delivery.vpp.bookReader.BookReaderViewerPreProcessorAlto</pl:className>
-  <pl:initParameters>
-  <fr:x_form  xmlns:fr="http://com/exlibris/digitool/common/forms/xmlbeans">
-	<form_name>BookReaderViewerPreProcessorAlto_Params</form_name>
-	<description>BookReaderViewerPreProcessorAlto_parameters_form</description>
-	<version>2.0</version>
-	<grid_x>1</grid_x>
-	<md_format>1</md_format>
-	<x_fields></x_fields>
-</fr:x_form>
-</pl:initParameters>
+  <pl:initParameters/>
   <pl:description>BookReader Viewer PreProcessor Alto</pl:description>
   <pl:version>2</pl:version>
   <pl:materialType>DIGITAL</pl:materialType>

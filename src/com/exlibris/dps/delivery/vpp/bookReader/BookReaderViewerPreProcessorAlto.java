@@ -36,6 +36,7 @@ import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
 
 import org.apache.xerces.parsers.DOMParser;
+import org.apache.commons.lang.StringEscapeUtils;
 import org.xml.sax.InputSource;
 import org.xml.sax.XMLReader;
 import org.xml.sax.helpers.XMLFilterImpl;
@@ -148,7 +149,7 @@ public class BookReaderViewerPreProcessorAlto extends AbstractViewerPreProcessor
 			throws IEParserException, Exception {
 		String resault;
 		DublinCore dc = ieParser.getIeDublinCore();
-		this.title = dc.getTitle();
+		this.title = StringEscapeUtils.escapeJavaScript(dc.getTitle());
 		DnxDocument firstFileDnx = getAccess().getFileInfoByDVS(dvs, pid);
 		fileDocumentHelper = new DnxDocumentHelper(firstFileDnx);
 		resault = fileDocumentHelper.getGeneralFileCharacteristics().getFileExtension();
@@ -384,7 +385,7 @@ public class BookReaderViewerPreProcessorAlto extends AbstractViewerPreProcessor
 			for (BlockType blockType : page.getPrintSpace().getTextBlockOrIllustrationOrGraphicalElement()) {
 				if (blockType instanceof TextBlockType) {
 					titleBuilder(blockType);
-					
+
 				} else if (blockType instanceof ComposedBlockType) {
 					ComposedBlockType composedBlockType=(ComposedBlockType)blockType;
 					for (BlockType innerBlockType : composedBlockType.getTextBlockOrIllustrationOrGraphicalElement()) {

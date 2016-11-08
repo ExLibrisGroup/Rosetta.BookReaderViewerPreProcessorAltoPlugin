@@ -4,7 +4,7 @@
  <pl:className>com.exlibris.dps.delivery.vpp.bookReader.BookReaderViewerPreProcessorAlto</pl:className>
   <pl:initParameters/>
   <pl:description>BookReader Viewer PreProcessor Alto</pl:description>
-  <pl:version>2</pl:version>
+  <pl:version>3</pl:version>
   <pl:materialType>DIGITAL</pl:materialType>
   <pl:module>Delivery</pl:module>
   <pl:generalType>TASK</pl:generalType>
@@ -18,7 +18,7 @@
       <telephone1>123-456-789</telephone1>
       <telephone2></telephone2>
       <email>yoelm@exlibris.co.il</email>
-      <address1>Agodat Asport2 Building 9</address1>
+      <address1>Agudat Asport2 Building 9</address1>
       <address2></address2>
       <city>Jerusalem</city>
       <zipCode>00000</zipCode>

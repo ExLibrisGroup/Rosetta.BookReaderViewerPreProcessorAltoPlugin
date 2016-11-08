@@ -6,5 +6,6 @@
 	<classpathentry kind="lib" path="lib/servlet-api-2.5.jar"/>
 	<classpathentry kind="lib" path="lib/xmlbeans-2.6.0.jar"/>
 	<classpathentry kind="lib" path="lib/xerces-2_6_2.jar"/>
+	<classpathentry kind="lib" path="lib/apache-commons-lang.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
